@@ -1,0 +1,571 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --gold: #e8c84a;
+  --gold-dim: #a8892a;
+  --blue: #4fc3f7;
+  --blue-dim: #1a6a8a;
+  --bg: #06060e;
+  --bg-mid: #0c0c1e;
+  --text: #dce0e8;
+  --muted: #6a6a88;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(232, 200, 74, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── STARFIELD ─────────────────────────────────────────── */
+
+#starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── NAV ─────────────────────────────────────────────────── */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(6, 6, 14, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  text-decoration: none;
+  text-shadow: 0 0 20px rgba(232, 200, 74, 0.5);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+
+/* ─── LAYOUT HELPERS ──────────────────────────────────────── */
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0.75rem auto 0;
+  opacity: 0.5;
+}
+
+/* ─── HERO ────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 2rem 80px;
+}
+
+.hero-inner {
+  max-width: 760px;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  color: var(--blue);
+  border: 1px solid var(--blue-dim);
+  padding: 0.35rem 1rem;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  text-shadow:
+    0 0 40px rgba(232, 200, 74, 0.4),
+    0 0 80px rgba(232, 200, 74, 0.15);
+  margin-bottom: 0.75rem;
+}
+
+.hero-subtitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.45em;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #a0a8bc;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 2rem auto;
+  opacity: 0.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--gold);
+  color: #06060e;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border-radius: 2px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 30px rgba(232, 200, 74, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border-radius: 2px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(232, 200, 74, 0.2);
+}
+
+.btn-outline svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.hero-logo {
+  margin-top: 3rem;
+}
+
+.hero-logo img {
+  width: 260px;
+  max-width: 80vw;
+  border-radius: 12px;
+  box-shadow: 0 0 60px rgba(232, 200, 74, 0.15);
+}
+
+/* ─── ABOUT SECTION ───────────────────────────────────────── */
+
+.about {
+  position: relative;
+  z-index: 1;
+  padding: 100px 0;
+  border-top: 1px solid var(--card-border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.about-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.about-card:hover {
+  border-color: rgba(232, 200, 74, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.about-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.about-card p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #8a90a8;
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ─── CONTACT SECTION ─────────────────────────────────────── */
+
+.contact {
+  position: relative;
+  z-index: 1;
+  padding: 100px 0;
+  text-align: center;
+  border-top: 1px solid var(--card-border);
+}
+
+.contact-text {
+  font-size: 1rem;
+  color: #8a90a8;
+  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.contact-email {
+  display: inline-block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-dim);
+  padding-bottom: 2px;
+  margin-bottom: 3rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.contact-email:hover {
+  color: #fff;
+  border-color: var(--gold);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  border: 1px solid;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.social-link svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.social-link.spotify {
+  color: #1ed760;
+  border-color: rgba(30, 215, 96, 0.3);
+}
+
+.social-link.spotify:hover {
+  box-shadow: 0 0 20px rgba(30, 215, 96, 0.25);
+  transform: translateY(-1px);
+}
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  border-top: 1px solid var(--card-border);
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+/* ─── EPISODES PAGE ───────────────────────────────────────── */
+
+.page-hero {
+  position: relative;
+  z-index: 1;
+  padding: 140px 2rem 80px;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(232, 200, 74, 0.35);
+  margin-bottom: 1rem;
+}
+
+.page-hero p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.episodes-section {
+  position: relative;
+  z-index: 1;
+  padding: 20px 0 120px;
+}
+
+.episodes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.episode-card {
+  background: var(--card-bg);
+  padding: 2rem 2.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  border-bottom: 1px solid var(--card-border);
+  transition: background 0.2s;
+}
+
+.episode-card:last-child {
+  border-bottom: none;
+}
+
+.episode-card:hover {
+  background: rgba(232, 200, 74, 0.04);
+}
+
+.episode-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  min-width: 32px;
+}
+
+.episode-info h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.episode-meta {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.episode-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.episode-desc {
+  font-size: 0.88rem;
+  color: #707090;
+  line-height: 1.6;
+  margin-top: 0.6rem;
+}
+
+.listen-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  background: transparent;
+  color: #1ed760;
+  border: 1px solid rgba(30, 215, 96, 0.3);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.25rem;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.listen-btn:hover {
+  border-color: rgba(30, 215, 96, 0.7);
+  box-shadow: 0 0 16px rgba(30, 215, 96, 0.2);
+}
+
+.listen-btn svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+/* trailer card */
+.episode-card.trailer {
+  background: rgba(232, 200, 74, 0.03);
+}
+
+.trailer-badge {
+  display: inline-block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  border: 1px solid rgba(232, 200, 74, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  margin-left: 0.75rem;
+  vertical-align: middle;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+
+@media (max-width: 700px) {
+  .nav-logo {
+    font-size: 0.85rem;
+  }
+
+  .episode-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .episode-num {
+    display: none;
+  }
+
+  .listen-btn {
+    width: fit-content;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
